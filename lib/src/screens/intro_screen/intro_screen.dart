@@ -1,5 +1,7 @@
 import 'package:another_carousel_pro/another_carousel_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:food_app_task/src/custom_widgets/full_size_button.dart';
+import 'package:food_app_task/src/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:food_app_task/src/utils/my_colors.dart';
 import 'package:food_app_task/src/utils/my_images.dart';
 import 'package:food_app_task/src/utils/my_string.dart';
@@ -13,19 +15,9 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  slideText() {
-    Column(
-      children: [
-        Text(MyStrings.liveYour, style: MyStyles.orange22Normal),
-        Text(MyStrings.dummy, style: MyStyles.white12Light),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: Column(
           children: [
@@ -53,13 +45,11 @@ class _IntroScreenState extends State<IntroScreen> {
                   width: double.infinity,
                   height: 320,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [MyColors.transparent,MyColors.darkBg],
-                      stops: const [0.1,1],
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter
-                    )
-                  ),
+                      gradient: LinearGradient(
+                          colors: [MyColors.transparent, MyColors.darkBg],
+                          stops: const [0.1, 1],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter)),
                 )
               ],
             ),
@@ -84,34 +74,40 @@ class _IntroScreenState extends State<IntroScreen> {
                         images: [
                           Column(
                             children: [
-                              Text(MyStrings.liveYour, style: MyStyles.orange22Normal),
+                              Text(MyStrings.liveYour,
+                                  style: MyStyles.orange22Normal),
                               const SizedBox(
                                 height: 10,
                               ),
                               Text(MyStrings.dummy,
-                                  style: MyStyles.white12Light.copyWith(height: 1.8),
+                                  style: MyStyles.white12Light
+                                      .copyWith(height: 1.8),
                                   textAlign: TextAlign.center),
                             ],
                           ),
                           Column(
                             children: [
-                              Text(MyStrings.liveYour, style: MyStyles.orange22Normal),
+                              Text(MyStrings.liveYour,
+                                  style: MyStyles.orange22Normal),
                               const SizedBox(
                                 height: 10,
                               ),
                               Text(MyStrings.dummy,
-                                  style: MyStyles.white12Light.copyWith(height: 1.8),
+                                  style: MyStyles.white12Light
+                                      .copyWith(height: 1.8),
                                   textAlign: TextAlign.center),
                             ],
                           ),
                           Column(
                             children: [
-                              Text(MyStrings.liveYour, style: MyStyles.orange22Normal),
+                              Text(MyStrings.liveYour,
+                                  style: MyStyles.orange22Normal),
                               const SizedBox(
                                 height: 10,
                               ),
                               Text(MyStrings.dummy,
-                                  style: MyStyles.white12Light.copyWith(height: 1.8),
+                                  style: MyStyles.white12Light
+                                      .copyWith(height: 1.8),
                                   textAlign: TextAlign.center),
                             ],
                           ),
@@ -121,17 +117,13 @@ class _IntroScreenState extends State<IntroScreen> {
                       ),
                     ),
                     const Spacer(),
-                    Container(
-                      width: double.infinity,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [MyColors.gradientOrange,MyColors.gradientRed],
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight
-                        ),
-                      ),
-                      child: Center(child: Text(MyStrings.continueText,style: MyStyles.white17Light)),
+                    FullSizeButton(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => const DashboardScreen()));
+                        print("Continue");
+                      },
+                      text: MyStrings.continueText,
                     )
                   ],
                 ),
