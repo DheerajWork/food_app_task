@@ -378,7 +378,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           width: MediaQuery.of(context).size.width * .28,
                         ),
                         Text(
-                          "Egg Only",
+                          "Egg Only",c
                           style: MyStyles.white12Light,
                         ),
                         const SizedBox(
