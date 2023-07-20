@@ -30,4 +30,5 @@ class MyStrings {
   static String alert = "Alert";
   static String cart = "Cart";
   static String account = "Account";
+  static String friedRice = "Fried Rice";
 }

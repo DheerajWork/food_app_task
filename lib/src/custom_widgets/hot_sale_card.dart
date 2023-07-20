@@ -16,7 +16,7 @@ class HotSaleCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
+        GestureDetector(
           onTap: onTap,
           child: Container(
             height: 95,
@@ -26,7 +26,7 @@ class HotSaleCard extends StatelessWidget {
                 color: MyColors.darkBg,
                 boxShadow: [
                   BoxShadow(
-                      color: MyColors.black.withOpacity(0.1),
+                      color: MyColors.black.withOpacity(0.3),
                       spreadRadius: 3,
                       blurRadius: 6,
                       offset: const Offset(0, 0))

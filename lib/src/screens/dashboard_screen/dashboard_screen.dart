@@ -208,42 +208,43 @@ class _DashboardScreenState extends State<DashboardScreen> {
               backgroundColor: MyColors.darkBg),
         ],
       ),
+      backgroundColor: MyColors.darkBg,
       body: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              color: MyColors.darkBg,
-              child: Stack(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 320,
-                    child: Image.asset(MyImages.homePageBg, fit: BoxFit.fill),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    height: 320,
-                    decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                          MyColors.black.withOpacity(0.2),
-                          MyColors.darkBg
-                        ],
-                            stops: const [
-                          0.1,
-                          1
-                        ],
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter)),
-                  )
-                ],
+        child: SingleChildScrollView(
+          child: Stack(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 600,
+                color: MyColors.darkBg,
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: 320,
+                      child: Image.asset(MyImages.homePageBg, fit: BoxFit.fill),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 320,
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                            MyColors.black.withOpacity(0.2),
+                            MyColors.darkBg
+                          ],
+                              stops: const [
+                            0.1,
+                            1
+                          ],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)),
+                    )
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15),
-              child: SingleChildScrollView(
+              Padding(
+                padding: const EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -301,7 +302,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     SizedBox(
                       width: double.infinity,
-                      height: 0,
+                      height: 100,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: cateList.length,
@@ -355,6 +356,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           "Veg Only",
                           style: MyStyles.white12Light,
                         ),
+                        const SizedBox(
+                          width: 10,
+                        ),
                         Switch(
                           value: vegOnly,
                           onChanged: (c) {
@@ -371,11 +375,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           inactiveTrackColor: const Color(0xff2e3641),
                         ),
                         SizedBox(
-                          width: MediaQuery.of(context).size.width * .3,
+                          width: MediaQuery.of(context).size.width * .28,
                         ),
                         Text(
                           "Egg Only",
                           style: MyStyles.white12Light,
+                        ),
+                        const SizedBox(
+                          width: 10,
                         ),
                         Switch(
                           value: eggOnly,
@@ -397,6 +404,18 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     const SizedBox(
                       height: 20,
                     ),
+                    if (eggOnly)
+                      Column(
+                        children: [
+                          Text(
+                              "Burger        Rolls        Drink        Pizza\nSandwich        Noodles        Momos",
+                              style: MyStyles.white17Regular
+                                  .copyWith(height: 2.5)),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                        ],
+                      ),
                     Text(
                       MyStrings.burgers,
                       style: MyStyles.white17Regular,
@@ -405,8 +424,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       height: 20,
                     ),
                     SizedBox(
-                      height: 2000,
+                      height: 1850,
                       child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: filteredList.length,
                         itemBuilder: (c, i) {
                           return DetailsCard(
@@ -421,9 +441,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                   ],
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
